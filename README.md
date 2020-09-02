@@ -33,3 +33,12 @@ The infrastructure for the project is as defined below.
     - This bucket will hold the terraform state file
     - All buckets must have a unique name
     - Create a folder within the bucket named `terraform1`
+
+## Running the Project 
+- Add your json service account key to the root directory 
+- Change directory into a folder with terraform code
+- Change the main.tf file to your unique configurations (comments are in the file for guidance)
+- Run the following commands:
+    -  `terraform init`: initalizes your working directory
+    -  `terraform plan`: shows the execution plan for your infrastructure. Lets you see which resources are being created
+    -  `terraform apply`: apply changes to the infrastructure through changes made in the main.tf file 
