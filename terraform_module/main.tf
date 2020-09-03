@@ -1,3 +1,14 @@
+provider "google" {
+  #change credentials to where the json key is stored
+  credentials = file("../terraform-key.json")
+  #change project to your project id in GCP
+  project = "gcp-terraform-288221"
+  #change region to preferred GCP region
+  region = "us-west1"
+  #change this to a GCP zone in the region
+  zone = "us-west1-a"
+}
+
 module "vpc" {
     source          = "terraform-google-modules/network/google//modules/subnets"
     version         = "~> 2.0.0"
@@ -8,7 +19,7 @@ module "vpc" {
     subnets = [
         {
             subnet_name     = "subnet-01"
-            subnet_ip       = var.cidr
+            subnet_ip       = "10.1.0.0/16"
             subnet_region   = var.region
         },
         #private subnet
