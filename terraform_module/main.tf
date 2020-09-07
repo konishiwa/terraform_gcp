@@ -9,6 +9,18 @@ provider "google" {
   zone = "us-west1-a"
 }
 
+#TODO: fix vpc logic, creating vpc
+terraform {
+  backend "gcs" {
+    #change bucket to GCP bucket that will store terraform state file
+    bucket = "gcp-terraform-lab"
+    #change prefix to folder inside bucket
+    prefix = "terraform1"
+    #change credentials to where the json key is stored
+    credentials = "../terraform-key.json"
+  }
+}
+
 resource "google_compute_network" "vpc_network" {
   #change name to preferred vpc name
   name = "terraform-network"
